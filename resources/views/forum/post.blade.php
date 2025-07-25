@@ -148,7 +148,7 @@
         <div class="post-header">
             <div>
                 <span class="post-author">
-                    <a href="#" onclick="showUserProfile({{ $post->user_id }})" style="color:#3b3b6d; text-decoration:underline; cursor:pointer; font-weight:bold;">{{ $post->user_name }}</a>
+                    <span style="color:#3b3b6d; font-weight:bold;">{{ $post->user_name }}</span>
                     <span style="color:#222; font-size:0.95em; font-weight:400;">({{ ($post->user_role ?? '') === 'admin' ? 'Administrator' : ($post->caregiver_status ?? 'Unknown Role') }})</span>
                     @if($userId == $post->user_id)<span class="post-you">(You)</span>@endif
                 </span>

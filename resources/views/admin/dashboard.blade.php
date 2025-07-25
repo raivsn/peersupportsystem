@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
+    <title>Forum statistics</title>
     <style>
         body { 
             font-family: Arial, sans-serif; 
@@ -35,7 +35,7 @@
 <body>
     @include('admin.navbar', ['active' => 'dashboard'])
     <div class="container">
-        <h1>Admin Dashboard</h1>
+        <h1>Forum statistics</h1>
         
         <!-- Statistics Overview -->
         <div class="stats-grid">
@@ -54,10 +54,6 @@
             <div class="stat-card">
                 <div class="stat-number">{{ $totalForumPosts }}</div>
                 <div class="stat-label">Forum Posts</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">{{ $totalForumReplies }}</div>
-                <div class="stat-label">Forum Replies</div>
             </div>
             <div class="stat-card">
                 <div class="stat-number">{{ $totalResources }}</div>
@@ -106,36 +102,7 @@
         </div>
 
         <!-- Most Active Users -->
-        <div class="section">
-            <h2>Most Active Users</h2>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>User</th>
-                        <th>Role</th>
-                        <th>Posts</th>
-                        <th>Replies</th>
-                        <th>Total Activity</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($mostActiveUsers as $user)
-                    <tr>
-                        <td>
-                            {{ $user->name }}
-                            <div class="user-role">{{ $user->email }}</div>
-                        </td>
-                        <td>
-                            <span class="category-tag">{{ ($user->role ?? '') === 'admin' ? 'Administrator' : ($user->caregiver_status ?? 'User') }}</span>
-                        </td>
-                        <td><span class="activity-count">{{ $user->post_count }}</span></td>
-                        <td><span class="activity-count">{{ $user->reply_count }}</span></td>
-                        <td><span class="activity-count">{{ $user->total_activity }}</span></td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
+        <!-- (Removed as per user request) -->
 
         <!-- Feedback Categories -->
         <!-- (Removed as per user request) -->

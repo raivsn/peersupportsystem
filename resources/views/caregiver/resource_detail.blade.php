@@ -27,7 +27,7 @@
     <div class="container">
         <a href="{{ route('caregiver.resources') }}" class="back-link">&larr; Back to Resource Library</a>
         <div class="author-meta" style="margin-bottom:0.7rem; color:#888; font-size:1rem;">
-            by <a href="#" onclick="showUserProfile({{ $resource->created_by }})" style="color:#3b3b6d; text-decoration:underline; cursor:pointer; font-weight:bold;">{{ $resource->author_name ?? 'Unknown User' }}</a>
+            by <span style="color:#3b3b6d; font-weight:bold;">{{ $resource->author_name ?? 'Unknown User' }}</span>
             <span style="color:#222; font-size:0.95em; font-weight:400;">({{ ($resource->author_role ?? '') === 'admin' ? 'Administrator' : ($resource->author_role ?? 'Unknown Role') }})</span>
         </div>
         <div class="category">{{ $resource->category ?: 'Uncategorized' }}</div>

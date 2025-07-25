@@ -13,7 +13,6 @@
                 <a href="{{ route('caregiver.forum') }}" style="font-weight:{{ $active == 'forum' ? 'bold' : 'normal' }}; color:{{ $active == 'forum' ? '#3b3b6d' : 'inherit' }};">Forum</a>
                 <a href="{{ route('caregiver.resources') }}" style="font-weight:{{ $active == 'resources' ? 'bold' : 'normal' }}; color:{{ $active == 'resources' ? '#3b3b6d' : 'inherit' }};">Resource Library</a>
                 <a href="{{ route('caregiver.bookmarks') }}" style="font-weight:{{ $active == 'bookmarks' ? 'bold' : 'normal' }}; color:{{ $active == 'bookmarks' ? '#3b3b6d' : 'inherit' }};">Bookmarked Posts</a>
-                <a href="{{ route('caregiver.myposts') }}" style="font-weight:{{ $active == 'myposts' ? 'bold' : 'normal' }}; color:{{ $active == 'myposts' ? '#3b3b6d' : 'inherit' }};">My Posts</a>
             </div>
             <div class="user-menu" id="user-menu">
                 <span class="user-btn" onclick="toggleDropdown()" style="background: none; border: none; font-size: 1rem; cursor: pointer; color: #3b3b6d; font-weight: bold; font-family: Arial, sans-serif; padding: 0; margin: 0;">

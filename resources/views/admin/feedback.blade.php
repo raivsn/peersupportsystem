@@ -15,7 +15,7 @@
             background-position: center center;
             background-attachment: fixed;
         }
-        .container { max-width: 1200px; margin: 2rem auto; background: rgba(255,255,255,0.92); border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); padding: 2rem; }
+        .container { max-width: 1200px; margin: 2rem auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); padding: 2rem; }
         h1 { color: #3b3b6d; }
         .navbar {
             display: flex;
@@ -149,12 +149,13 @@
         }
         
         .rating {
-            background: #e3f2fd;
-            color: #1976d2;
+            background: #fff;
+            color: #23234c;
             padding: 0.25rem 0.75rem;
             border-radius: 20px;
             font-size: 0.875rem;
             font-weight: 600;
+            border: 1px solid #eee;
         }
         
         .date {
@@ -214,16 +215,9 @@
         <!-- (Removed as per user request) -->
         
         <!-- Feedback Filters -->
+        <!-- Removed Filter by Category as per user request -->
+        
         <form method="GET" action="" style="margin-bottom: 1.5rem; display: flex; gap: 1.5rem; align-items: flex-end;">
-            <div>
-                <label for="category" style="font-weight:600; color:#3b3b6d;">Filter by Category:</label>
-                <select name="category" id="category" onchange="this.form.submit()" style="padding:0.5rem; border-radius:6px; border:1px solid #ccc; min-width:120px;">
-                    <option value="">All</option>
-                    @foreach($categories as $cat)
-                        <option value="{{ $cat }}" @if(request('category') == $cat) selected @endif>{{ $cat }}</option>
-                    @endforeach
-                </select>
-            </div>
             <div>
                 <label for="sort_rating" style="font-weight:600; color:#3b3b6d;">Sort by Rating:</label>
                 <select name="sort_rating" id="sort_rating" onchange="this.form.submit()" style="padding:0.5rem; border-radius:6px; border:1px solid #ccc; min-width:120px;">
@@ -242,9 +236,7 @@
                     <div class="feedback-item">
                         <div class="feedback-header">
                             <div class="user-info">
-                                <a href="#" onclick="showUserProfile({{ $feedback->user->id }})" style="color:#3b3b6d; text-decoration:underline; cursor:pointer;">
-                                    {{ $feedback->user->name ?? 'Unknown User' }}
-                                </a>
+                                <span style="color:#3b3b6d; font-weight:600;">{{ $feedback->user->name ?? 'Unknown User' }}</span>
                                 <span class="user-role" style="color:#888; font-size:0.95em; font-weight:400;">
                                     ({{ $feedback->user->caregiver_status ?? 'Unknown Role' }})
                                 </span>
@@ -257,8 +249,8 @@
                         @if($feedback->category)
                             <div class="category"><strong>Category:</strong> {{ $feedback->category }}</div>
                         @endif
-                        <div class="content-preview">{{ Str::limit($feedback->content, 200) }}</div>
-                        <a href="{{ route('admin.feedback.show', $feedback->id) }}" class="view-detail">View Full Feedback</a>
+                        <div class="content-preview">{{ $feedback->content }}</div>
+                        <!-- Removed the 'View Full Feedback' link as per user request -->
                     </div>
                 @endforeach
             @else

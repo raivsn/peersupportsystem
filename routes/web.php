@@ -80,7 +80,7 @@ Route::get('/dashboard/caregiver', function () {
             DB::raw('(SELECT MAX(created_at) FROM forum_replies WHERE forum_post_id = p.id)')
         )
         ->orderByDesc('p.created_at')
-        ->limit(10)
+        ->limit(20)
         ->get();
     // For each post, get latest reply info
     foreach ($recently_active_posts as $post) {
@@ -676,12 +676,4 @@ Route::post('/forum/reply/{replyId}/delete', function ($replyId) {
 
 Route::get('/user/profile/{id}', [App\Http\Controllers\UserProfileController::class, 'show'])->name('user.profile.info'); 
 
-Route::get('/caregiver/myposts', function () {
-    $userId = session('user_id');
-    if (!$userId) return redirect('/login');
-    $my_posts = DB::table('forum_posts')
-        ->where('user_id', $userId)
-        ->orderByDesc('created_at')
-        ->get();
-    return view('caregiver.myposts', ['my_posts' => $my_posts]);
-})->name('caregiver.myposts'); 
+// Removed /caregiver/myposts route as per user request 

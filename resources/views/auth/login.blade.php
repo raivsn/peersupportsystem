@@ -45,6 +45,13 @@
             National Autism Society of Malaysia (NASOM)
         </div>
         <h1>Login</h1>
+        @if($errors->any())
+            <div style="color: #e74c3c; margin-bottom: 1rem; font-weight: bold; text-align:center;">
+                @foreach($errors->all() as $error)
+                    <div>{{ $error }}</div>
+                @endforeach
+            </div>
+        @endif
         <form method="POST" action="/login">
             @csrf
             <label for="email">Email</label>

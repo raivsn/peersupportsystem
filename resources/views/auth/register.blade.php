@@ -49,6 +49,13 @@
         @if(session('success'))
             <div class="success-msg">{{ session('success') }}</div>
         @endif
+        @if($errors->any())
+            <div style="color: #e74c3c; margin-bottom: 1rem; font-weight: bold; text-align:center;">
+                @foreach($errors->all() as $error)
+                    <div>{{ $error }}</div>
+                @endforeach
+            </div>
+        @endif
         <form method="POST" action="/register">
             @csrf
             <label for="name">Name</label>

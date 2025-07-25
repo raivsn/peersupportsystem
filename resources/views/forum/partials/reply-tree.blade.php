@@ -7,7 +7,7 @@
         <div class="reply-header" style="position: relative;">
             <div class="reply-header-content">
                 <span class="reply-author">
-                    <a href="#" onclick="showUserProfile({{ $reply->user_id }})" style="color:#5a5ad1; text-decoration:underline; cursor:pointer; font-weight:bold;">{{ $reply->user_name }}</a>
+                <span style="color:#5a5ad1; font-weight:bold;">{{ $reply->user_name }}</span>
                     <span style="color:#222; font-size:0.95em; font-weight:400;">({{ ($reply->user_role ?? '') === 'admin' ? 'Administrator' : ($reply->caregiver_status ?? 'Unknown Role') }})</span>
                     @if($userId == $reply->user_id)<span class="reply-you">(You)</span>@endif
                 </span>

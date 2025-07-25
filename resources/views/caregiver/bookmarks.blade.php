@@ -97,7 +97,7 @@
                         <div>
                             <a href="{{ route('forum.post', ['postId' => $bookmark->id]) }}" class="bookmark-link">{{ $bookmark->title }}</a>
                             <div class="bookmark-meta">Category: {{ $bookmark->category_name }}</div>
-                            <div class="bookmark-meta">by <a href="#" onclick="showUserProfile({{ $bookmark->user_id }})" style="color:#3b3b6d; text-decoration:underline; cursor:pointer;">{{ $bookmark->user_name ?? 'Unknown User' }}</a>
+                            <div class="bookmark-meta">by <span style="color:#3b3b6d; font-weight:600;">{{ $bookmark->user_name ?? 'Unknown User' }}</span>
     <span style="color:#888; font-size:0.95em; font-weight:400;">({{ $bookmark->caregiver_status ?? 'Unknown Role' }})</span>
 </div>
                         </div>
@@ -109,44 +109,7 @@
             <p style="color:#666; margin-top:1rem;">No bookmarked posts yet. Start bookmarking posts from the forum!</p>
         @endif
     </div>
-    <!-- User Profile Modal and JS (reuse from admin/feedback.blade.php) -->
-    <div id="userProfileModal" class="modal-overlay" style="display:none;">
-        <div class="modal-content" style="max-width:400px;">
-            <div class="modal-header">
-                <h2 class="modal-title">User Profile</h2>
-                <button class="close-btn" onclick="closeUserProfileModal()">&times;</button>
-            </div>
-            <div id="userProfileContent">
-                <!-- Profile info will be loaded here -->
-            </div>
-        </div>
-    </div>
-    <script>
-    function showUserProfile(userId) {
-        fetch('/user/profile/' + userId)
-            .then(response => response.json())
-            .then(data => {
-                let html = '';
-                html += `<div><strong>Name:</strong> ${data.name}</div>`;
-                html += `<div><strong>Role:</strong> ${data.caregiver_status ? data.caregiver_status : data.role}</div>`;
-                if (data.caregiver_status && data.caregiver_status !== 'admin') {
-                    html += `<div><strong>Number of autistic children:</strong> ${data.num_autism_children ?? '-'}</div>`;
-                    html += `<div><strong>Ages:</strong> ${(data.autism_children_ages && data.autism_children_ages.length > 0) ? data.autism_children_ages.join(', ') : '-'}</div>`;
-                }
-                document.getElementById('userProfileContent').innerHTML = html;
-                document.getElementById('userProfileModal').style.display = 'flex';
-            });
-    }
-    function closeUserProfileModal() {
-        document.getElementById('userProfileModal').style.display = 'none';
-    }
-    document.addEventListener('click', function(e) {
-        const modal = document.getElementById('userProfileModal');
-        if (modal && e.target === modal) {
-            closeUserProfileModal();
-        }
-    });
-    </script>
+    <!-- Removed user profile modal and related JS as per user request -->
     <style>
     .modal-overlay {
         position: fixed;
